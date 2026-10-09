@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+
+  --color-forest-950: #13261b;
+  --color-forest-900: #1f3d2b;
+  --color-forest-700: #2f5d3a;
+  --color-forest-500: #4f7d55;
+  --color-moss-300: #a9c29a;
+  --color-moss-100: #e3ecdc;
+  --color-sand-50: #faf8f3;
+  --color-sand-100: #f4f1ea;
+  --color-sand-200: #e9e3d6;
+  --color-stone-400: #a39b8b;
+  --color-charcoal-900: #22302a;
+  --color-charcoal-600: #4a5a52;
+  --color-clay-600: #c2622d;
+  --color-clay-700: #a44f22;
+  --color-clay-100: #f7e3d6;
+
+  --radius-xl2: 1.25rem;
+  --shadow-card: 0 1px 2px rgb(19 38 27 / 0.06), 0 8px 24px -12px rgb(19 38 27 / 0.18);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-sand-50 text-charcoal-900 font-sans antialiased; }
+  h1, h2, h3 { @apply font-display tracking-tight text-forest-950; font-optical-sizing: auto; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-clay-600; }
+  ::selection { @apply bg-moss-300 text-forest-950; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+  .prose-site p { @apply mb-4 leading-relaxed text-charcoal-600; }
+  .prose-site h2 { @apply mt-8 mb-3 text-2xl; }
+  .prose-site ul { @apply mb-4 list-disc space-y-1 pl-5 text-charcoal-600; }
+  .fade-up { animation: fade-up .5s ease-out both; }
+}
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .fade-up { animation: none; } html { scroll-behavior: auto; } }
+
+@media print {
+  header, footer, nav, .no-print { display: none !important; }
+  body { background: #fff; }
+}
